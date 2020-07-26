@@ -9,7 +9,7 @@ application up and running.
 
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false, add_index:true|
+|name|string|null: false, add_index: true|
 |email|string|null: false, unigue:true|
 |password|string|null: false|
 |passwordconfirmation|string|null: false|
@@ -18,7 +18,7 @@ application up and running.
 ### Association
 - has_many:messeges
 - has_many:group_users
-- has_many:groups,throgh: :group_users
+- has_many:groups,through: :group_users
 
 
 ## messegesテーブル
@@ -26,24 +26,24 @@ application up and running.
 |Column|Type|Options|
 |------|----|-------|
 |body|text|
-|image|strong|
+|image|string|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :groups
+- belongs_to :group
 - belongs_to :user
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false, unigue:true|
 
 
 ### Association
 - has_many:messeges
-- has_many:users,through:group_users
+- has_many:users,through: :group_users
 - has_many:group_users
 
 ## groups_usersテーブル
